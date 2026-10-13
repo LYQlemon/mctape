@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "mctape-replay": {
+      "command": "node",
+      "args": [
+        "${MCTAPE_PROJECT_DIR}/bin/mctape.mjs",
+        "replay",
+        "--tape",
+        "${MCTAPE_PROJECT_DIR}/fixtures/demo.json"
+      ]
+    },
+    "mctape-record": {
+      "command": "node",
+      "args": [
+        "${MCTAPE_PROJECT_DIR}/bin/mctape.mjs",
+        "record",
+        "--out",
+        "${MCTAPE_PROJECT_DIR}/tapes/session-001.json"
+      ],
+      "env": {
+        "MCD_MCP_TOKEN": "${MCD_MCP_TOKEN}"
+      }
+    }
+  }
+}
