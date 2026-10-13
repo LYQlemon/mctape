@@ -1,0 +1,8 @@
+node_modules/
+tapes/
+reports/
+.env
+.env.*
+*.tmp
+.idea/
+.DS_Store
