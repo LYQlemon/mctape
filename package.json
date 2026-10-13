@@ -1,0 +1,18 @@
+{
+  "name": "mcd-mctape",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Record read-only McDonald's MCP calls and replay them offline with deterministic faults.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "demo": "node bin/mctape.mjs demo",
+    "test": "node --test test/*.test.mjs",
+    "replay": "node bin/mctape.mjs replay --tape fixtures/demo.json",
+    "report": "node bin/mctape.mjs report --tape fixtures/demo.json",
+    "smoke": "node --env-file=.env.local scripts/smoke.mjs",
+    "smoke:offline": "node scripts/smoke.mjs --offline"
+  }
+}
