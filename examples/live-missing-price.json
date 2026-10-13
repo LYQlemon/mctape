@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "calculate-price",
+    "onCall": 1,
+    "kind": "drop-field",
+    "path": [
+      "structuredContent",
+      "data",
+      "price"
+    ]
+  }
+]
