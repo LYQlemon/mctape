@@ -1,0 +1,213 @@
+{
+  "format": "mctape/v1",
+  "source": "synthetic",
+  "createdAt": "2026-10-13T09:00:00Z",
+  "protocolVersion": "2025-06-18",
+  "description": "All entries, stores, prices and parameter schemas are synthetic examples. No McDonald's connection was made.",
+  "tools": [
+    {
+      "name": "now-time-info",
+      "description": "查询当前时间（演示 schema，不代表官方当前参数）",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "query-meals",
+      "description": "查询菜单（演示 schema，不代表官方当前参数）",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "storeCode": {
+            "type": "string"
+          },
+          "beType": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "storeCode",
+          "beType"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "query-meal-detail",
+      "description": "查询套餐详情（演示 schema，不代表官方当前参数）",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "storeCode": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "storeCode",
+          "code"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "calculate-price",
+      "description": "试算总价（演示 schema，不代表官方当前参数）",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "storeCode": {
+            "type": "string"
+          },
+          "goods": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "code",
+                "quantity"
+              ]
+            }
+          }
+        },
+        "required": [
+          "storeCode",
+          "goods"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    }
+  ],
+  "entries": [
+    {
+      "tool": "now-time-info",
+      "arguments": {},
+      "key": "5747d900a37a29879c125d6caa3b92e9bfb21430d9a9474fbdfd665c4cc49383",
+      "recordedAt": "2026-10-13T09:00:00Z",
+      "durationMs": 40,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"now\":\"2026-10-13T17:00:00+08:00\",\"demo\":true}"
+          }
+        ],
+        "structuredContent": {
+          "now": "2026-10-13T17:00:00+08:00",
+          "demo": true
+        }
+      }
+    },
+    {
+      "tool": "query-meals",
+      "arguments": {
+        "storeCode": "DEMO_STORE",
+        "beType": 1
+      },
+      "key": "278d453a42a875fd577499eeb06c3c1b0ff7a6140a4ad8313d148f6949aec6e6",
+      "recordedAt": "2026-10-13T09:00:00Z",
+      "durationMs": 55,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"items\":[{\"code\":\"DEMO_COMBO\",\"name\":\"虚构演示汉堡套餐\",\"currentPrice\":2690,\"unit\":\"fen\"}],\"demo\":true}"
+          }
+        ],
+        "structuredContent": {
+          "items": [
+            {
+              "code": "DEMO_COMBO",
+              "name": "虚构演示汉堡套餐",
+              "currentPrice": 2690,
+              "unit": "fen"
+            }
+          ],
+          "demo": true
+        }
+      }
+    },
+    {
+      "tool": "query-meal-detail",
+      "arguments": {
+        "storeCode": "DEMO_STORE",
+        "code": "DEMO_COMBO"
+      },
+      "key": "893dd2c454c5ada78579dd7ed938447438c67384878d6447df2d89f8aac8dc6d",
+      "recordedAt": "2026-10-13T09:00:00Z",
+      "durationMs": 70,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"code\":\"DEMO_COMBO\",\"composition\":[\"演示汉堡\",\"演示小薯\",\"演示无糖饮料\"],\"demo\":true}"
+          }
+        ],
+        "structuredContent": {
+          "code": "DEMO_COMBO",
+          "composition": [
+            "演示汉堡",
+            "演示小薯",
+            "演示无糖饮料"
+          ],
+          "demo": true
+        }
+      }
+    },
+    {
+      "tool": "calculate-price",
+      "arguments": {
+        "storeCode": "DEMO_STORE",
+        "goods": [
+          {
+            "code": "DEMO_COMBO",
+            "quantity": 1
+          }
+        ]
+      },
+      "key": "7c3b466b0d0f8705fbbb4cc41d2781ad25bed6e0dd9af4f96da5f5ebfbdfd51e",
+      "recordedAt": "2026-10-13T09:00:00Z",
+      "durationMs": 85,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"totalPrice\":2490,\"discountPrice\":200,\"unit\":\"fen\",\"demo\":true}"
+          }
+        ],
+        "structuredContent": {
+          "totalPrice": 2490,
+          "discountPrice": 200,
+          "unit": "fen",
+          "demo": true
+        }
+      }
+    }
+  ]
+}
